@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+	int chances, pin, enteredpin, withdraw, enteredcash, balance, input2;
+	printf("Welcome to Laxmi Chit Funds Co-op Bank ATM\n");
+	balance=1000.00;
+	pin = 1234;
+	chances =3;
+	while (chances>0) {
+	printf("kindly enter your 4-digit PIN: ");
+	scanf("%d",&enteredpin);
+		if (pin==enteredpin) {
+			printf("Select action:\n");
+			printf("1. Check Balance\n2. Withdraw Cash\n3. Deposit Funds\n4. Return Card\n");
+			printf("Enter 1/2/3/4: ");
+			int input1;
+			scanf("%d",&input1);
+			
+			if (input1==1){
+				printf("Your balance is: %d\n", balance);
+			}
+			else if (input1==2){
+				printf("How much cash do you wish to withdraw?\n Pease enter amount:\n");
+				scanf("%d",&withdraw);
+				if (withdraw<=balance){
+					balance=balance-withdraw;
+					printf("Cash withdrawn : Rs %d. Kindly collect your cash and withdraw your card", balance);
+					}
+				else {
+					printf("Insufficient funds\n");
+					}
+			}
+			else if (input1==3) {
+				printf("Enter amount of cash deposited: \n");
+				scanf("%d",&enteredcash);
+				balance=balance+enteredcash;
+				printf("Cash deposited. Your new balance is %d\n", balance);
+			}
+			else if (input1==4){
+				printf("safely eject card\n");
+				return 0;
+			}
+			else {
+				printf("Invalid input\n");
+			}
+		printf("Enter 1 to go back to actions, Enter anything else to eject card\n");
+		scanf("%d",&input2);
+		if (input2==1) {
+			printf("\n");
+		}
+		else {
+		printf("safely eject card\n");
+		return 0;		
+		}
+		}
+		else {
+			chances=chances-1;
+			printf("Yor pin is incorrect. Please enter correct pin.\n");
+			printf("Remaining tries: %d\n", chances);
+		};
+	};
+	printf("Too many incorrect tries. Your card has been blocked. Please visit any Laxmi Chit Fund branch to reactivate card.");
+	return 0;
+}
